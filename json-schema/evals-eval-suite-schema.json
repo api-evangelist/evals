@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-eval-suite-schema.json",
+  "title": "EvalSuite",
+  "description": "A named collection of eval cases plus the scorers and grading policy that run against them. An eval suite is the unit that gets versioned, attached to a CI pipeline, and re-executed across models — analogous to a test suite in software testing.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "suite_rag_faq_v3"
+    },
+    "name": {
+      "type": "string",
+      "example": "Support FAQ RAG Suite"
+    },
+    "description": {
+      "type": "string",
+      "example": "End-to-end evaluation of the customer-support RAG pipeline across 240 representative questions."
+    },
+    "version": {
+      "type": "string",
+      "example": "3.2.0"
+    },
+    "dataset_id": {
+      "type": "string",
+      "description": "Identifier of the dataset of eval cases this suite is bound to.",
+      "example": "ds_support_faq_2026q2"
+    },
+    "scorers": {
+      "type": "array",
+      "description": "Scorers run on every case in the suite.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "scorer_faithfulness_v2" },
+          "name": { "type": "string", "example": "faithfulness" },
+          "type": {
+            "type": "string",
+            "enum": ["code", "llm_judge", "human", "heuristic", "reference_based", "reference_free", "pairwise"]
+          },
+          "threshold": {
+            "type": "number",
+            "description": "Pass/fail threshold for this scorer on this suite.",
+            "example": 0.8
+          }
+        },
+        "required": ["name", "type"]
+      }
+    },
+    "policy": {
+      "type": "object",
+      "description": "Aggregation and pass/fail policy at the suite level.",
+      "properties": {
+        "aggregation": {
+          "type": "string",
+          "enum": ["mean", "median", "pass_rate", "min", "max"],
+          "example": "mean"
+        },
+        "fail_on_threshold": {
+          "type": "boolean",
+          "description": "When true, the suite fails CI if any scorer falls below its threshold.",
+          "example": true
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["rag", "production", "support"]
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-04-01T00:00:00Z"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-05-15T11:24:00Z"
+    }
+  },
+  "required": ["id", "name", "dataset_id", "scorers"]
+}

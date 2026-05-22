@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-judge-schema.json",
+  "title": "Judge",
+  "description": "A specialized scorer that uses an LLM (or human panel) to render judgment on the system-under-test's output. Captures the judge model, the judge prompt, the rubric, and calibration data — the things you'd want when comparing one judge to another or validating a judge against human ratings. Patronus AI's Lynx and GLIDER, OpenAI's model_graded evals, and TruLens feedback functions are all instances of this shape.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "judge_groundedness_panel_v1"
+    },
+    "name": {
+      "type": "string",
+      "example": "Groundedness Judge"
+    },
+    "description": {
+      "type": "string",
+      "example": "LLM-as-a-judge scoring whether an answer is grounded in retrieved context."
+    },
+    "judge_kind": {
+      "type": "string",
+      "enum": ["llm", "human", "model_panel", "human_panel", "distilled_evaluator"],
+      "example": "llm"
+    },
+    "model": {
+      "type": "object",
+      "description": "Model used as the judge (when judge_kind is llm or distilled_evaluator).",
+      "properties": {
+        "provider": { "type": "string", "example": "anthropic" },
+        "name": { "type": "string", "example": "claude-opus-4-7" },
+        "version": { "type": "string" }
+      },
+      "required": ["provider", "name"]
+    },
+    "prompt_template": {
+      "type": "string",
+      "description": "The prompt used by the judge. Should include slots for {input}, {output}, {expected}, {context} as applicable.",
+      "example": "You are a strict evaluator. Given the question {input}, the retrieved context {context}, and the answer {output}, score groundedness on a 0-1 scale. Explain your reasoning."
+    },
+    "rubric": {
+      "type": "string",
+      "description": "Human-readable rubric the judge follows."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": ["score", "score_and_rationale", "label", "label_and_rationale", "pairwise_preference"],
+      "example": "score_and_rationale"
+    },
+    "calibration": {
+      "type": "object",
+      "description": "Optional calibration evidence — agreement with human raters, Cohen's kappa, etc.",
+      "properties": {
+        "human_agreement": { "type": "number", "example": 0.87 },
+        "kappa": { "type": "number", "example": 0.74 },
+        "sample_size": { "type": "integer", "example": 250 },
+        "calibrated_on": { "type": "string", "format": "date-time" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["rag", "groundedness", "llm-judge"]
+    }
+  },
+  "required": ["id", "name", "judge_kind"]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "run_humaneval_HumanEval_0_run3",
+  "suite_id": "suite_humaneval_v1",
+  "case_id": "HumanEval/0",
+  "experiment_id": "exp_2026_05_22_claude_opus_4_7_humaneval",
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-opus-4-7",
+    "temperature": 0.2,
+    "max_tokens": 1024
+  },
+  "prompt": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+  "output": "    for i, a in enumerate(numbers):\n        for j, b in enumerate(numbers):\n            if i != j and abs(a - b) < threshold:\n                return True\n    return False\n",
+  "scorer": {
+    "id": "scorer_humaneval_passk",
+    "name": "pass@1",
+    "type": "reference_based"
+  },
+  "score": 1.0,
+  "label": "PASS",
+  "evidence": {
+    "rationale": "Generated function passed all unit tests defined in the HumanEval test harness on the first sample.",
+    "trace_id": "trace_humaneval_HumanEval_0_run3"
+  },
+  "metrics": {
+    "latency_ms": 1124,
+    "input_tokens": 168,
+    "output_tokens": 52,
+    "cost_usd": 0.0051
+  },
+  "tags": ["humaneval", "code-generation", "pass@1"],
+  "timestamp": "2026-05-22T15:48:02Z"
+}

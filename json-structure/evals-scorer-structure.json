@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-structure/evals-scorer-structure.json",
+  "name": "Scorer",
+  "description": "A function producing a score from (input, output, expected?, context?) — code, heuristic, LLM judge, human, reference-based, reference-free, or pairwise.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "code",
+        "llm_judge",
+        "human",
+        "heuristic",
+        "reference_based",
+        "reference_free",
+        "pairwise"
+      ]
+    },
+    "implementation": { "type": "string" },
+    "judge_model": { "type": "string" },
+    "judge_prompt": { "type": "string" },
+    "scale": {
+      "type": "object",
+      "properties": {
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "step": { "type": "number" },
+        "kind": {
+          "type": "string",
+          "enum": ["continuous", "binary", "ordinal", "categorical"]
+        }
+      }
+    },
+    "threshold": { "type": "number" },
+    "rubric": { "type": "string" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["id", "name", "type"]
+}

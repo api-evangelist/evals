@@ -1,0 +1,18 @@
+{
+  "id": "ds_mmlu_v1",
+  "name": "MMLU",
+  "description": "Measuring Massive Multitask Language Understanding — multiple-choice benchmark spanning 57 subjects from STEM and international law to nutrition and religion.",
+  "version": "1.0.0",
+  "task": "knowledge",
+  "source": "https://huggingface.co/datasets/cais/mmlu",
+  "license": "MIT",
+  "splits": {
+    "dev": { "count": 285 },
+    "validation": { "count": 1531 },
+    "test": { "count": 14042 }
+  },
+  "case_count": 15908,
+  "tags": ["knowledge", "multitask", "multiple-choice", "benchmark"],
+  "created": "2020-09-07T00:00:00Z",
+  "modified": "2026-05-22T00:00:00Z"
+}

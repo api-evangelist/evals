@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-structure/evals-eval-run-structure.json",
+  "name": "EvalRun",
+  "description": "A single graded execution of a system-under-test against an eval case, captured in JSON Structure form for cross-tool interchange of eval results.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this eval run record."
+    },
+    "suite_id": {
+      "type": "string",
+      "description": "Identifier of the parent eval suite."
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Identifier of the eval case executed."
+    },
+    "experiment_id": {
+      "type": "string",
+      "description": "Identifier of the experiment grouping a set of runs."
+    },
+    "model": {
+      "type": "object",
+      "description": "The model and configuration being evaluated.",
+      "properties": {
+        "provider": { "type": "string" },
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "temperature": { "type": "number" },
+        "max_tokens": { "type": "integer" },
+        "system_prompt": { "type": "string" }
+      }
+    },
+    "prompt": { "type": "string" },
+    "input": { "type": "object" },
+    "output": { "type": "string" },
+    "output_structured": { "type": "object" },
+    "expected": { "type": "string" },
+    "scorer": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "code",
+            "llm_judge",
+            "human",
+            "heuristic",
+            "reference_based",
+            "reference_free",
+            "pairwise"
+          ]
+        }
+      }
+    },
+    "score": { "type": "number" },
+    "label": { "type": "string" },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "rationale": { "type": "string" },
+        "judge_model": { "type": "string" },
+        "trace_id": { "type": "string" },
+        "retrieved_context": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "latency_ms": { "type": "integer" },
+        "input_tokens": { "type": "integer" },
+        "output_tokens": { "type": "integer" },
+        "cost_usd": { "type": "number" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["id", "case_id", "model", "output", "scorer", "score", "timestamp"]
+}

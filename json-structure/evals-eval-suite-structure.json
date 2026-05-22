@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-structure/evals-eval-suite-structure.json",
+  "name": "EvalSuite",
+  "description": "A named collection of eval cases plus scorers and aggregation policy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "version": { "type": "string" },
+    "dataset_id": { "type": "string" },
+    "scorers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "code",
+              "llm_judge",
+              "human",
+              "heuristic",
+              "reference_based",
+              "reference_free",
+              "pairwise"
+            ]
+          },
+          "threshold": { "type": "number" }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "aggregation": {
+          "type": "string",
+          "enum": ["mean", "median", "pass_rate", "min", "max"]
+        },
+        "fail_on_threshold": { "type": "boolean" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "created": { "type": "string", "format": "date-time" },
+    "modified": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id", "name", "dataset_id", "scorers"]
+}

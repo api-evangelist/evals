@@ -1,0 +1,30 @@
+{
+  "id": "run_pairwise_chatbot_arena_8421",
+  "suite_id": "suite_pairwise_helpfulness_v1",
+  "case_id": "case_pairwise_8421",
+  "experiment_id": "exp_2026_05_22_pairwise_opus_vs_gpt5",
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-opus-4-7"
+  },
+  "prompt": "Explain the difference between supervised and reinforcement learning to a high-school student.",
+  "output": "Supervised learning is like studying with an answer key — for every question, you already know the correct answer and the model learns to match it. Reinforcement learning is like learning a sport — the model tries things, gets rewards or penalties, and gradually figures out what works.",
+  "scorer": {
+    "id": "scorer_pairwise_helpfulness",
+    "name": "pairwise-helpfulness",
+    "type": "pairwise"
+  },
+  "score": 1.0,
+  "label": "A_BETTER",
+  "evidence": {
+    "rationale": "Output A provides a clearer concrete analogy and is more age-appropriate than Output B, which uses unexplained jargon like 'policy gradients.'",
+    "judge_model": "gpt-5",
+    "trace_id": "trace_pairwise_8421"
+  },
+  "metrics": {
+    "latency_ms": 2210,
+    "cost_usd": 0.0117
+  },
+  "tags": ["pairwise", "helpfulness", "education"],
+  "timestamp": "2026-05-22T15:51:38Z"
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-scorer-schema.json",
+  "title": "Scorer",
+  "description": "A function that takes (input, output, optional expected, optional context) and produces a score plus optional rationale. Scorers come in several flavors: code-based (deterministic), heuristic, reference-based (compared to ground truth), reference-free (criterion adherence on raw output), LLM-as-a-judge, pairwise, and human ratings. Every eval platform — Braintrust, LangSmith, Inspect AI, DeepEval, Weave, TruLens — exposes a scorer abstraction with this shape.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "scorer_faithfulness_v2"
+    },
+    "name": {
+      "type": "string",
+      "example": "faithfulness"
+    },
+    "description": {
+      "type": "string",
+      "example": "Measures whether the answer is grounded in the retrieved context (RAG faithfulness)."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["code", "llm_judge", "human", "heuristic", "reference_based", "reference_free", "pairwise"],
+      "example": "llm_judge"
+    },
+    "implementation": {
+      "type": "string",
+      "description": "Pointer to the implementation: a function reference, a judge prompt template, or a model identifier.",
+      "example": "python:my_evals.faithfulness:v2"
+    },
+    "judge_model": {
+      "type": "string",
+      "description": "When type is llm_judge, the model used to score.",
+      "example": "claude-opus-4-7"
+    },
+    "judge_prompt": {
+      "type": "string",
+      "description": "When type is llm_judge, the prompt template applied to score each case."
+    },
+    "scale": {
+      "type": "object",
+      "description": "Score range and step semantics.",
+      "properties": {
+        "min": { "type": "number", "example": 0 },
+        "max": { "type": "number", "example": 1 },
+        "step": { "type": "number", "example": 0.01 },
+        "kind": {
+          "type": "string",
+          "enum": ["continuous", "binary", "ordinal", "categorical"],
+          "example": "continuous"
+        }
+      }
+    },
+    "threshold": {
+      "type": "number",
+      "description": "Default pass/fail threshold for this scorer (if applicable).",
+      "example": 0.8
+    },
+    "rubric": {
+      "type": "string",
+      "description": "Optional human-readable rubric describing how a perfect, partial, and failing answer look.",
+      "example": "1.0 = every claim in the answer is directly supported by the retrieved context. 0.5 = mostly supported with minor unsupported additions. 0.0 = answer contradicts or invents content."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["rag", "groundedness"]
+    }
+  },
+  "required": ["id", "name", "type"]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-structure/evals-eval-case-structure.json",
+  "name": "EvalCase",
+  "description": "A single test case in an eval suite: input, optional expected output, retrieval context, metadata.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "input": { "type": "string" },
+    "input_structured": { "type": "object" },
+    "expected": { "type": "string" },
+    "expected_structured": { "type": "object" },
+    "context": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "domain": { "type": "string" },
+        "difficulty": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard"]
+        },
+        "persona": { "type": "string" },
+        "source": { "type": "string", "format": "uri" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["id", "input"]
+}

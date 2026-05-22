@@ -1,0 +1,33 @@
+{
+  "id": "run_mmlu_anatomy_142",
+  "suite_id": "suite_mmlu_anatomy",
+  "case_id": "mmlu_anatomy_142",
+  "experiment_id": "exp_2026_05_22_mmlu_full",
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-opus-4-7",
+    "temperature": 0.0,
+    "max_tokens": 4
+  },
+  "prompt": "Which of the following is NOT a function of the spleen?\nA. Filtering old red blood cells\nB. Producing antibodies\nC. Producing insulin\nD. Storing platelets\n\nAnswer:",
+  "output": "C",
+  "expected": "C",
+  "scorer": {
+    "id": "scorer_exact_match",
+    "name": "exact_match",
+    "type": "reference_based"
+  },
+  "score": 1.0,
+  "label": "PASS",
+  "evidence": {
+    "rationale": "Output letter exactly matches the expected answer key."
+  },
+  "metrics": {
+    "latency_ms": 412,
+    "input_tokens": 58,
+    "output_tokens": 1,
+    "cost_usd": 0.0008
+  },
+  "tags": ["mmlu", "knowledge", "anatomy", "multiple-choice"],
+  "timestamp": "2026-05-22T15:54:09Z"
+}

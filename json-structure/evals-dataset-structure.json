@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-structure/evals-dataset-structure.json",
+  "name": "EvalDataset",
+  "description": "A collection of EvalCases plus provenance, license, splits, and task metadata.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "version": { "type": "string" },
+    "task": {
+      "type": "string",
+      "enum": [
+        "qa",
+        "rag",
+        "code_generation",
+        "summarization",
+        "classification",
+        "agent_task",
+        "safety",
+        "multi_turn_dialogue",
+        "knowledge",
+        "reasoning"
+      ]
+    },
+    "source": { "type": "string", "format": "uri" },
+    "license": { "type": "string" },
+    "splits": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "count": { "type": "integer" },
+          "uri": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "case_count": { "type": "integer" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "created": { "type": "string", "format": "date-time" },
+    "modified": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id", "name", "task"]
+}

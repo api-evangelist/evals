@@ -1,0 +1,695 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Evals
+  description: Vocabulary and taxonomy for the LLM and AI agent evaluation topic, spanning eval platforms (OpenAI Evals, Inspect AI, Braintrust, LangSmith, Promptfoo, Helicone, Patronus, DeepEval, Arize, Galileo, Humanloop, TruLens, Weave, Ragas, MLflow) and benchmark suites (MMLU, HumanEval, GAIA, AgentBench, BIG-Bench).
+  created: '2026-05-22'
+  modified: '2026-05-22'
+
+operational:
+  apis:
+    - name: OpenAI Evals
+      namespace: openai-evals
+      version: "latest"
+      baseUrl: https://github.com/openai/evals
+      status: active
+    - name: Inspect AI
+      namespace: inspect-ai
+      version: "0.3"
+      baseUrl: https://inspect.aisi.org.uk
+      status: active
+    - name: Braintrust
+      namespace: braintrust
+      version: "1.0"
+      baseUrl: https://www.braintrust.dev
+      status: active
+    - name: LangSmith Evaluation
+      namespace: langsmith
+      version: "2025"
+      baseUrl: https://api.smith.langchain.com
+      status: active
+    - name: Promptfoo
+      namespace: promptfoo
+      version: "0.x"
+      baseUrl: https://www.promptfoo.dev
+      status: active
+    - name: Helicone
+      namespace: helicone
+      version: "1.0"
+      baseUrl: https://api.helicone.ai
+      status: active
+    - name: Patronus AI
+      namespace: patronus
+      version: "1.0"
+      baseUrl: https://api.patronus.ai
+      status: active
+    - name: DeepEval
+      namespace: deepeval
+      version: "1.x"
+      baseUrl: https://www.deepeval.com
+      status: active
+    - name: Arize Phoenix
+      namespace: phoenix
+      version: "5.x"
+      baseUrl: https://arize.com
+      status: active
+    - name: Galileo
+      namespace: galileo
+      version: "1.0"
+      baseUrl: https://www.galileo.ai
+      status: active
+    - name: Humanloop
+      namespace: humanloop
+      version: "n/a"
+      baseUrl: https://humanloop.com
+      status: sunset
+    - name: TruLens
+      namespace: trulens
+      version: "1.x"
+      baseUrl: https://www.trulens.org
+      status: active
+    - name: Weights and Biases Weave
+      namespace: weave
+      version: "0.x"
+      baseUrl: https://wandb.ai
+      status: active
+    - name: Ragas
+      namespace: ragas
+      version: "0.x"
+      baseUrl: https://docs.ragas.io
+      status: active
+    - name: MLflow LLM Evaluate
+      namespace: mlflow-llm
+      version: "2.x"
+      baseUrl: https://mlflow.org
+      status: active
+    - name: MMLU
+      namespace: mmlu
+      version: "1.0"
+      baseUrl: https://huggingface.co/datasets/cais/mmlu
+      status: active
+    - name: HumanEval
+      namespace: humaneval
+      version: "1.0"
+      baseUrl: https://huggingface.co/datasets/openai/openai_humaneval
+      status: active
+    - name: GAIA
+      namespace: gaia
+      version: "1.0"
+      baseUrl: https://huggingface.co/gaia-benchmark
+      status: active
+    - name: AgentBench
+      namespace: agentbench
+      version: "1.0"
+      baseUrl: https://github.com/THUDM/AgentBench
+      status: active
+    - name: BIG-Bench
+      namespace: big-bench
+      version: "1.0"
+      baseUrl: https://github.com/google/BIG-bench
+      status: active
+
+  resources:
+    - name: eval-runs
+      description: Individual graded executions of a system-under-test against a case
+      apis:
+        - openai-evals
+        - inspect-ai
+        - braintrust
+        - langsmith
+        - promptfoo
+        - deepeval
+        - phoenix
+        - weave
+      actions:
+        - create
+        - read
+        - list
+        - aggregate
+    - name: eval-suites
+      description: Versioned collections of cases plus scorers and policy
+      apis:
+        - braintrust
+        - langsmith
+        - promptfoo
+        - deepeval
+        - inspect-ai
+      actions:
+        - create
+        - run
+        - version
+        - schedule
+    - name: eval-cases
+      description: Individual test cases (input, optional expected, context, metadata)
+      apis:
+        - openai-evals
+        - braintrust
+        - langsmith
+        - deepeval
+      actions:
+        - create
+        - update
+        - import
+        - list
+    - name: datasets
+      description: Collections of eval cases with provenance, license, splits
+      apis:
+        - openai-evals
+        - braintrust
+        - langsmith
+        - deepeval
+        - phoenix
+        - weave
+      actions:
+        - create
+        - version
+        - import
+        - export
+    - name: scorers
+      description: Functions producing scores from (input, output, expected?, context?)
+      apis:
+        - braintrust
+        - langsmith
+        - deepeval
+        - trulens
+        - weave
+        - ragas
+      actions:
+        - define
+        - register
+        - invoke
+    - name: judges
+      description: LLM-as-a-judge (or human) scoring models with prompts and rubrics
+      apis:
+        - braintrust
+        - langsmith
+        - patronus
+        - galileo
+        - deepeval
+        - trulens
+        - phoenix
+      actions:
+        - define
+        - calibrate
+        - invoke
+    - name: experiments
+      description: Immutable snapshots grouping runs against a dataset and model config
+      apis:
+        - braintrust
+        - langsmith
+        - weave
+        - mlflow-llm
+      actions:
+        - create
+        - compare
+        - branch
+        - archive
+    - name: traces
+      description: Execution traces of LLM applications under evaluation (OpenTelemetry)
+      apis:
+        - phoenix
+        - helicone
+        - weave
+        - trulens
+        - galileo
+      actions:
+        - capture
+        - replay
+        - score
+    - name: leaderboards
+      description: Public rankings of models against shared benchmarks
+      apis:
+        - mmlu
+        - humaneval
+        - gaia
+        - agentbench
+        - big-bench
+      actions:
+        - submit
+        - publish
+        - filter
+
+  actions:
+    - name: run
+      description: Execute an eval suite against a model
+      httpMethod: POST
+      pattern: write
+    - name: score
+      description: Apply a scorer or judge to an output
+      httpMethod: POST
+      pattern: write
+    - name: compare
+      description: Compare two experiments (often pairwise)
+      httpMethod: POST
+      pattern: query
+    - name: aggregate
+      description: Roll up runs into a suite-level or experiment-level metric
+      httpMethod: GET
+      pattern: read
+    - name: trace
+      description: Capture an execution trace for later scoring
+      httpMethod: POST
+      pattern: write
+    - name: judge
+      description: Invoke an LLM-as-a-judge scorer
+      httpMethod: POST
+      pattern: write
+    - name: red-team
+      description: Run an adversarial / safety-probe suite against a model
+      httpMethod: POST
+      pattern: write
+    - name: submit
+      description: Submit a model's scores to a public benchmark leaderboard
+      httpMethod: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: EvalRun
+        description: A single graded execution of a system-under-test against an eval case
+        properties:
+          - name: id
+          - name: case_id
+          - name: model
+          - name: output
+          - name: scorer
+          - name: score
+          - name: evidence
+          - name: timestamp
+      - name: EvalSuite
+        description: A named, versioned collection of cases plus scorers and policy
+        properties:
+          - name: id
+          - name: name
+          - name: dataset_id
+          - name: scorers
+          - name: policy
+      - name: EvalCase
+        description: A single test case in an eval suite
+        properties:
+          - name: id
+          - name: input
+          - name: expected
+          - name: context
+          - name: metadata
+      - name: EvalDataset
+        description: A collection of eval cases with provenance, license, splits
+        properties:
+          - name: id
+          - name: name
+          - name: task
+          - name: case_count
+          - name: license
+      - name: Scorer
+        description: A function producing a score from (input, output, expected?, context?)
+        properties:
+          - name: id
+          - name: name
+          - name: type
+          - name: scale
+          - name: threshold
+      - name: Judge
+        description: A specialized LLM-as-a-judge scorer with model, prompt, rubric, calibration
+        properties:
+          - name: id
+          - name: judge_kind
+          - name: model
+          - name: prompt_template
+          - name: rubric
+          - name: calibration
+
+  parameters:
+    identifiers:
+      - name: run_id
+        description: Unique identifier for an eval run record
+      - name: suite_id
+        description: Identifier of an eval suite
+      - name: case_id
+        description: Identifier of an eval case
+      - name: experiment_id
+        description: Identifier of an experiment grouping runs
+      - name: dataset_id
+        description: Identifier of an eval dataset
+      - name: trace_id
+        description: OpenTelemetry trace id linking a run to its execution trace
+    configuration:
+      - name: model
+        description: Model under evaluation
+      - name: temperature
+        description: Sampling temperature used for the run
+      - name: max_tokens
+        description: Maximum tokens for the run output
+      - name: threshold
+        description: Pass/fail threshold for a scorer
+
+  enums:
+    scorer_type:
+      - code
+      - llm_judge
+      - human
+      - heuristic
+      - reference_based
+      - reference_free
+      - pairwise
+    judge_kind:
+      - llm
+      - human
+      - model_panel
+      - human_panel
+      - distilled_evaluator
+    task:
+      - qa
+      - rag
+      - code_generation
+      - summarization
+      - classification
+      - agent_task
+      - safety
+      - multi_turn_dialogue
+      - knowledge
+      - reasoning
+    aggregation:
+      - mean
+      - median
+      - pass_rate
+      - min
+      - max
+    label:
+      - PASS
+      - FAIL
+      - A_BETTER
+      - B_BETTER
+      - TIE
+    difficulty:
+      - easy
+      - medium
+      - hard
+
+  authentication:
+    schemes:
+      - name: API Key
+        type: apiKey
+        description: Bearer API key for eval platform APIs
+        apis:
+          - braintrust
+          - langsmith
+          - patronus
+          - galileo
+          - helicone
+          - weave
+
+capability:
+  workflows:
+    - name: Reference-Based Benchmark Run
+      description: Run a model against a public benchmark (MMLU, HumanEval) using exact-match or pass@k scoring and publish a leaderboard entry
+      apis:
+        - mmlu
+        - humaneval
+        - openai-evals
+        - inspect-ai
+      personas:
+        - AI Researcher
+        - ML Engineer
+      domains:
+        - Benchmarking
+        - Reference-Based Scoring
+
+    - name: LLM-as-a-Judge Scoring
+      description: Use a second LLM to score outputs of a system-under-test against a written rubric, optionally calibrated against human ratings
+      apis:
+        - braintrust
+        - langsmith
+        - deepeval
+        - patronus
+        - galileo
+        - trulens
+        - phoenix
+        - weave
+      personas:
+        - AI Engineer
+        - Eval Engineer
+      domains:
+        - LLM as a Judge
+
+    - name: RAG Triad Evaluation
+      description: Score a RAG pipeline on groundedness, context relevance, and answer relevance to tune retrieval and generation
+      apis:
+        - trulens
+        - ragas
+        - deepeval
+        - phoenix
+        - langsmith
+      personas:
+        - AI Engineer
+        - RAG Engineer
+      domains:
+        - RAG
+
+    - name: Pairwise Preference Comparison
+      description: Have a judge rank candidate outputs A vs B (or tie) when absolute scoring is hard but relative preference is reliable
+      apis:
+        - langsmith
+        - braintrust
+        - weave
+      personas:
+        - AI Engineer
+      domains:
+        - Pairwise
+
+    - name: CI/CD Regression Gate
+      description: Wire an eval suite into CI so a PR that drops a scorer below threshold fails the build
+      apis:
+        - braintrust
+        - promptfoo
+        - langsmith
+        - deepeval
+      personas:
+        - ML Engineer
+        - Platform Engineer
+      domains:
+        - CI/CD
+        - Regression Detection
+
+    - name: Online Production Monitoring
+      description: Run reference-free scorers (often distilled judges like Galileo Luna) against live traffic via tracing/observability to flag regressions in real time
+      apis:
+        - galileo
+        - phoenix
+        - weave
+        - helicone
+        - trulens
+      personas:
+        - ML Engineer
+        - SRE
+      domains:
+        - Observability
+        - Online Monitoring
+
+    - name: Agent Trajectory Evaluation
+      description: Score multi-step agent runs on tool-selection correctness, step efficiency, and final-answer faithfulness against agent benchmarks
+      apis:
+        - inspect-ai
+        - braintrust
+        - galileo
+        - weave
+        - agentbench
+        - gaia
+      personas:
+        - AI Engineer
+        - Agent Builder
+      domains:
+        - Agent Evaluation
+
+    - name: Red-Team and Safety Evaluation
+      description: Run adversarial test suites for jailbreaks, prompt injection, PII leakage, harmful content, and policy violations
+      apis:
+        - promptfoo
+        - patronus
+        - galileo
+        - inspect-ai
+      personas:
+        - Security Engineer
+        - Safety Researcher
+      domains:
+        - Safety
+        - Red Teaming
+
+    - name: Frontier Capability Assessment
+      description: Independent labs evaluate frontier models on capability and safety before release
+      apis:
+        - inspect-ai
+        - mmlu
+        - gaia
+        - big-bench
+      personas:
+        - Safety Researcher
+        - Frontier Lab
+      domains:
+        - Frontier Evaluation
+
+  personas:
+    - id: ai-engineer
+      name: AI Engineer
+      description: Engineers shipping LLM-powered features who need eval as the production quality gate
+      workflows:
+        - LLM-as-a-Judge Scoring
+        - RAG Triad Evaluation
+        - Pairwise Preference Comparison
+        - Agent Trajectory Evaluation
+
+    - id: eval-engineer
+      name: Eval Engineer
+      description: Specialists who author and maintain eval suites, judges, and rubrics
+      workflows:
+        - LLM-as-a-Judge Scoring
+        - CI/CD Regression Gate
+
+    - id: ml-engineer
+      name: ML Engineer
+      description: Engineers training, tuning, and selecting models
+      workflows:
+        - Reference-Based Benchmark Run
+        - CI/CD Regression Gate
+        - Online Production Monitoring
+
+    - id: rag-engineer
+      name: RAG Engineer
+      description: Engineers tuning chunking, embedding, reranking, and generation for retrieval-augmented apps
+      workflows:
+        - RAG Triad Evaluation
+
+    - id: agent-builder
+      name: Agent Builder
+      description: Engineers building multi-step AI agents with tools
+      workflows:
+        - Agent Trajectory Evaluation
+
+    - id: ai-researcher
+      name: AI Researcher
+      description: Researchers comparing models on benchmarks and publishing results
+      workflows:
+        - Reference-Based Benchmark Run
+        - Frontier Capability Assessment
+
+    - id: safety-researcher
+      name: Safety Researcher
+      description: Researchers assessing model safety, alignment, and red-team robustness
+      workflows:
+        - Red-Team and Safety Evaluation
+        - Frontier Capability Assessment
+
+    - id: security-engineer
+      name: Security Engineer
+      description: Engineers responsible for LLM application security
+      workflows:
+        - Red-Team and Safety Evaluation
+
+    - id: platform-engineer
+      name: Platform Engineer
+      description: Engineers operating the eval platform and CI infrastructure
+      workflows:
+        - CI/CD Regression Gate
+
+    - id: sre
+      name: SRE
+      description: Reliability engineers monitoring LLM apps in production
+      workflows:
+        - Online Production Monitoring
+
+    - id: frontier-lab
+      name: Frontier Lab
+      description: AI Safety Institutes and frontier labs running pre-release capability/safety evals
+      workflows:
+        - Frontier Capability Assessment
+
+  domains:
+    - name: LLM as a Judge
+      description: Using a second LLM to score the output of a system-under-test against a rubric
+    - name: Reference-Based Scoring
+      description: Comparing output against ground truth via exact match, BLEU, ROUGE, embedding similarity, or pass@k
+    - name: Reference-Free Scoring
+      description: Scoring quality without ground truth — toxicity, coherence, faithfulness against context, criterion adherence
+    - name: Pairwise
+      description: Ranking two candidate outputs A vs B (or tie) when absolute scoring is hard
+    - name: Benchmarking
+      description: Running a model against a standardized public dataset for leaderboard-style comparison
+    - name: RAG
+      description: Evaluating retrieval-augmented generation pipelines (groundedness, context relevance, answer relevance)
+    - name: Agent Evaluation
+      description: Scoring multi-step agent trajectories on tool use, efficiency, and final-answer quality
+    - name: CI/CD
+      description: Wiring eval suites into continuous integration to block regressions
+    - name: Regression Detection
+      description: Detecting quality drops between two versions of a system before reaching production
+    - name: Observability
+      description: Trace, metric, and log capture for LLM applications, often the substrate for online evaluation
+    - name: Online Monitoring
+      description: Running scorers on live production traffic to flag real-time quality regressions
+    - name: Safety
+      description: Evaluating harmful content, bias, PII leakage, and policy violations
+    - name: Red Teaming
+      description: Adversarial probing for jailbreaks, prompt injection, and security vulnerabilities
+    - name: Frontier Evaluation
+      description: Independent assessment of frontier models by AISI-style labs prior to public release
+
+crossReference:
+  - resource: eval-runs
+    operations:
+      - run
+      - score
+      - aggregate
+    workflows:
+      - Reference-Based Benchmark Run
+      - LLM-as-a-Judge Scoring
+      - Agent Trajectory Evaluation
+    personas:
+      - AI Engineer
+      - ML Engineer
+  - resource: eval-suites
+    operations:
+      - run
+      - aggregate
+    workflows:
+      - CI/CD Regression Gate
+      - LLM-as-a-Judge Scoring
+    personas:
+      - Eval Engineer
+      - Platform Engineer
+  - resource: scorers
+    operations:
+      - score
+      - judge
+    workflows:
+      - LLM-as-a-Judge Scoring
+      - RAG Triad Evaluation
+    personas:
+      - Eval Engineer
+      - AI Engineer
+  - resource: judges
+    operations:
+      - judge
+      - score
+    workflows:
+      - LLM-as-a-Judge Scoring
+      - Pairwise Preference Comparison
+    personas:
+      - Eval Engineer
+  - resource: traces
+    operations:
+      - trace
+      - score
+    workflows:
+      - Online Production Monitoring
+    personas:
+      - SRE
+      - ML Engineer
+  - resource: leaderboards
+    operations:
+      - submit
+      - compare
+    workflows:
+      - Reference-Based Benchmark Run
+      - Frontier Capability Assessment
+    personas:
+      - AI Researcher
+      - Frontier Lab

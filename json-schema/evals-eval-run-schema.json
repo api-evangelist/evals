@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-eval-run-schema.json",
+  "title": "EvalRun",
+  "description": "A single graded execution of a system-under-test against an eval case. Captures the model, prompt, output, the scorer that judged it, the score, and any evidence (rationale, traces, references) backing the score. This is the atomic record produced by every eval platform — Braintrust experiments, LangSmith runs, Inspect AI samples, Promptfoo rows — and is what gets aggregated into experiment-level metrics and leaderboard entries.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this eval run record.",
+      "example": "run_01HV9ZK4Q2NXBV9F2EE6AYJ8N7"
+    },
+    "suite_id": {
+      "type": "string",
+      "description": "Identifier of the parent eval suite this run belongs to.",
+      "example": "suite_rag_faq_v3"
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Identifier of the eval case (input + optional expected) this run executed.",
+      "example": "case_0042"
+    },
+    "experiment_id": {
+      "type": "string",
+      "description": "Identifier of the experiment grouping a set of runs against a single dataset and model configuration.",
+      "example": "exp_2026_05_22_gpt5_baseline"
+    },
+    "model": {
+      "type": "object",
+      "description": "The model (and configuration) being evaluated.",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "example": "anthropic"
+        },
+        "name": {
+          "type": "string",
+          "example": "claude-opus-4-7"
+        },
+        "version": {
+          "type": "string",
+          "example": "20260501"
+        },
+        "temperature": {
+          "type": "number",
+          "example": 0.0
+        },
+        "max_tokens": {
+          "type": "integer",
+          "example": 2048
+        },
+        "system_prompt": {
+          "type": "string",
+          "description": "Optional system prompt used for this run."
+        }
+      },
+      "required": ["provider", "name"]
+    },
+    "prompt": {
+      "type": "string",
+      "description": "The user-facing prompt or input passed to the model for this case.",
+      "example": "What is the refund window for a damaged item?"
+    },
+    "input": {
+      "type": "object",
+      "description": "Structured input payload when the eval is not a single string prompt (e.g. agent task with tools, multi-turn conversation, RAG context bundle)."
+    },
+    "output": {
+      "type": "string",
+      "description": "The raw output produced by the system-under-test.",
+      "example": "Damaged items can be refunded within 30 days of delivery."
+    },
+    "output_structured": {
+      "type": "object",
+      "description": "Optional structured representation of the output (tool calls, JSON content, agent trajectory)."
+    },
+    "expected": {
+      "type": "string",
+      "description": "Ground-truth expected output when the case is reference-based. Absent for reference-free evals.",
+      "example": "30 days from delivery for damaged items."
+    },
+    "scorer": {
+      "type": "object",
+      "description": "Reference to the scorer that produced the score on this run.",
+      "properties": {
+        "id": { "type": "string", "example": "scorer_faithfulness_v2" },
+        "name": { "type": "string", "example": "faithfulness" },
+        "type": {
+          "type": "string",
+          "description": "Scoring mode.",
+          "enum": ["code", "llm_judge", "human", "heuristic", "reference_based", "reference_free", "pairwise"]
+        }
+      },
+      "required": ["name", "type"]
+    },
+    "score": {
+      "type": "number",
+      "description": "Numeric score, typically normalized 0.0–1.0. Use 0/1 for pass/fail.",
+      "example": 0.92,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "label": {
+      "type": "string",
+      "description": "Categorical label (e.g. PASS, FAIL, A_BETTER, TIE) when the scorer is non-numeric.",
+      "example": "PASS"
+    },
+    "evidence": {
+      "type": "object",
+      "description": "Supporting evidence for the score — judge rationale, matched/unmatched substrings, retrieved context, trace IDs.",
+      "properties": {
+        "rationale": {
+          "type": "string",
+          "description": "Natural-language explanation from a judge model or human rater.",
+          "example": "The answer is consistent with the retrieved policy excerpt and contains no unsupported claims."
+        },
+        "judge_model": {
+          "type": "string",
+          "description": "The judge model used when scorer.type is llm_judge.",
+          "example": "gpt-5"
+        },
+        "trace_id": {
+          "type": "string",
+          "description": "OpenTelemetry trace ID linking this run to a full execution trace."
+        },
+        "retrieved_context": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "RAG context chunks supplied to the model for this run."
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Additional cost / latency / token metrics captured during execution.",
+      "properties": {
+        "latency_ms": { "type": "integer", "example": 1843 },
+        "input_tokens": { "type": "integer", "example": 412 },
+        "output_tokens": { "type": "integer", "example": 84 },
+        "cost_usd": { "type": "number", "example": 0.0093 }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags for filtering and slicing (e.g. domain, persona, dataset split).",
+      "example": ["rag", "support-faq", "en-US"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this eval run was executed.",
+      "example": "2026-05-22T15:42:11Z"
+    }
+  },
+  "required": ["id", "case_id", "model", "output", "scorer", "score", "timestamp"]
+}

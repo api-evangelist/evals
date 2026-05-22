@@ -1,0 +1,40 @@
+{
+  "id": "suite_rag_faq_v3",
+  "name": "Support FAQ RAG Suite",
+  "description": "End-to-end evaluation of the customer-support RAG pipeline across 240 representative questions, scored on faithfulness, answer relevancy, context recall, and pass@threshold helpfulness.",
+  "version": "3.2.0",
+  "dataset_id": "ds_support_faq_2026q2",
+  "scorers": [
+    {
+      "id": "scorer_faithfulness_v2",
+      "name": "faithfulness",
+      "type": "llm_judge",
+      "threshold": 0.8
+    },
+    {
+      "id": "scorer_answer_relevancy_v1",
+      "name": "answer_relevancy",
+      "type": "llm_judge",
+      "threshold": 0.75
+    },
+    {
+      "id": "scorer_context_recall_v1",
+      "name": "context_recall",
+      "type": "reference_based",
+      "threshold": 0.7
+    },
+    {
+      "id": "scorer_helpfulness_human_v1",
+      "name": "helpfulness_human",
+      "type": "human",
+      "threshold": 0.8
+    }
+  ],
+  "policy": {
+    "aggregation": "mean",
+    "fail_on_threshold": true
+  },
+  "tags": ["rag", "production", "support"],
+  "created": "2026-04-01T00:00:00Z",
+  "modified": "2026-05-15T11:24:00Z"
+}

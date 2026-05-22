@@ -1,0 +1,21 @@
+{
+  "id": "judge_groundedness_v1",
+  "name": "Groundedness Judge",
+  "description": "LLM-as-a-judge scoring whether an answer is grounded in retrieved context. Modeled on the TruLens RAG-triad 'groundedness' feedback function.",
+  "judge_kind": "llm",
+  "model": {
+    "provider": "openai",
+    "name": "gpt-5",
+    "version": "2026-04-01"
+  },
+  "prompt_template": "You are a strict evaluator. Given the user question {input}, the retrieved context {context}, and the assistant's answer {output}, score how well the answer is grounded in the retrieved context on a 0.0-1.0 scale. Penalize any claim in the answer that is not directly supported by the context. Return JSON {\"score\": number, \"rationale\": string}.",
+  "rubric": "1.0 = every claim in the answer is directly supported by the retrieved context. 0.5 = mostly supported with minor unsupported additions. 0.0 = answer contradicts or invents content beyond the context.",
+  "output_format": "score_and_rationale",
+  "calibration": {
+    "human_agreement": 0.87,
+    "kappa": 0.74,
+    "sample_size": 250,
+    "calibrated_on": "2026-04-15T00:00:00Z"
+  },
+  "tags": ["rag", "groundedness", "llm-judge"]
+}

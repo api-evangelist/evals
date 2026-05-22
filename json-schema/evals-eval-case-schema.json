@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-eval-case-schema.json",
+  "title": "EvalCase",
+  "description": "A single test case in an eval suite: the input given to the system-under-test plus optional expected output, retrieval context, and metadata. The smallest reusable unit of evaluation — equivalent to a row in a Hugging Face dataset, a 'golden' in DeepEval, or an example in LangSmith.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "case_0042"
+    },
+    "input": {
+      "type": "string",
+      "description": "The prompt or input string given to the system-under-test.",
+      "example": "What is the refund window for a damaged item?"
+    },
+    "input_structured": {
+      "type": "object",
+      "description": "Structured input when the case is not a single string (multi-turn conversation, agent goal, tool-calling task)."
+    },
+    "expected": {
+      "type": "string",
+      "description": "Ground-truth expected output for reference-based scoring. Optional.",
+      "example": "30 days from delivery for damaged items."
+    },
+    "expected_structured": {
+      "type": "object",
+      "description": "Structured ground-truth (expected tool calls, expected agent trajectory, JSON answer)."
+    },
+    "context": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional retrieval context provided to the model for RAG-style cases.",
+      "example": ["Refund policy section 4.2: Damaged items may be returned within 30 days of delivery for a full refund."]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Arbitrary metadata: difficulty, domain, persona, source URL, license.",
+      "properties": {
+        "domain": { "type": "string", "example": "customer-support" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"], "example": "easy" },
+        "persona": { "type": "string", "example": "first-time-buyer" },
+        "source": { "type": "string", "format": "uri" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["policy", "refunds"]
+    }
+  },
+  "required": ["id", "input"]
+}

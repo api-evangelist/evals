@@ -1,0 +1,244 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "evals": "https://api-evangelist.github.io/evals/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "EvalRun": "evals:EvalRun",
+    "EvalSuite": "evals:EvalSuite",
+    "EvalCase": "evals:EvalCase",
+    "EvalDataset": "evals:EvalDataset",
+    "Scorer": "evals:Scorer",
+    "Judge": "evals:Judge",
+    "Model": "evals:Model",
+    "Experiment": "evals:Experiment",
+
+    "id": {
+      "@id": "dcterms:identifier",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "version": "schema:version",
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "modified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "timestamp": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+
+    "suite_id": {
+      "@id": "evals:suite",
+      "@type": "@id"
+    },
+    "case_id": {
+      "@id": "evals:case",
+      "@type": "@id"
+    },
+    "experiment_id": {
+      "@id": "evals:experiment",
+      "@type": "@id"
+    },
+    "dataset_id": {
+      "@id": "evals:dataset",
+      "@type": "@id"
+    },
+    "model": {
+      "@id": "evals:model",
+      "@type": "@id"
+    },
+    "provider": {
+      "@id": "evals:provider",
+      "@type": "xsd:string"
+    },
+    "temperature": {
+      "@id": "evals:temperature",
+      "@type": "xsd:decimal"
+    },
+    "max_tokens": {
+      "@id": "evals:maxTokens",
+      "@type": "xsd:integer"
+    },
+    "system_prompt": {
+      "@id": "evals:systemPrompt",
+      "@type": "xsd:string"
+    },
+
+    "prompt": {
+      "@id": "evals:prompt",
+      "@type": "xsd:string"
+    },
+    "input": {
+      "@id": "evals:input",
+      "@type": "xsd:string"
+    },
+    "output": {
+      "@id": "evals:output",
+      "@type": "xsd:string"
+    },
+    "expected": {
+      "@id": "evals:expected",
+      "@type": "xsd:string"
+    },
+    "context": {
+      "@id": "evals:context",
+      "@container": "@list",
+      "@type": "xsd:string"
+    },
+
+    "scorer": {
+      "@id": "evals:scorer",
+      "@type": "@id"
+    },
+    "judge": {
+      "@id": "evals:judge",
+      "@type": "@id"
+    },
+    "judge_model": {
+      "@id": "evals:judgeModel",
+      "@type": "xsd:string"
+    },
+    "judge_prompt": {
+      "@id": "evals:judgePrompt",
+      "@type": "xsd:string"
+    },
+    "judge_kind": {
+      "@id": "evals:judgeKind",
+      "@type": "xsd:string"
+    },
+    "prompt_template": {
+      "@id": "evals:promptTemplate",
+      "@type": "xsd:string"
+    },
+    "rubric": {
+      "@id": "evals:rubric",
+      "@type": "xsd:string"
+    },
+    "output_format": {
+      "@id": "evals:outputFormat",
+      "@type": "xsd:string"
+    },
+    "calibration": {
+      "@id": "evals:calibration",
+      "@type": "@id"
+    },
+    "human_agreement": {
+      "@id": "evals:humanAgreement",
+      "@type": "xsd:decimal"
+    },
+    "kappa": {
+      "@id": "evals:kappa",
+      "@type": "xsd:decimal"
+    },
+
+    "type": {
+      "@id": "evals:scorerType",
+      "@type": "xsd:string"
+    },
+    "scale": {
+      "@id": "evals:scale",
+      "@type": "@id"
+    },
+    "threshold": {
+      "@id": "evals:threshold",
+      "@type": "xsd:decimal"
+    },
+
+    "score": {
+      "@id": "evals:score",
+      "@type": "xsd:decimal"
+    },
+    "label": {
+      "@id": "evals:label",
+      "@type": "xsd:string"
+    },
+    "evidence": {
+      "@id": "evals:evidence",
+      "@type": "@id"
+    },
+    "rationale": {
+      "@id": "evals:rationale",
+      "@type": "xsd:string"
+    },
+    "retrieved_context": {
+      "@id": "evals:retrievedContext",
+      "@container": "@list",
+      "@type": "xsd:string"
+    },
+    "trace_id": {
+      "@id": "evals:traceId",
+      "@type": "xsd:string"
+    },
+
+    "metrics": {
+      "@id": "evals:metrics",
+      "@type": "@id"
+    },
+    "latency_ms": {
+      "@id": "evals:latencyMs",
+      "@type": "xsd:integer"
+    },
+    "input_tokens": {
+      "@id": "evals:inputTokens",
+      "@type": "xsd:integer"
+    },
+    "output_tokens": {
+      "@id": "evals:outputTokens",
+      "@type": "xsd:integer"
+    },
+    "cost_usd": {
+      "@id": "evals:costUsd",
+      "@type": "xsd:decimal"
+    },
+
+    "task": {
+      "@id": "evals:task",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "license": "schema:license",
+    "splits": {
+      "@id": "evals:splits",
+      "@type": "@id"
+    },
+    "case_count": {
+      "@id": "evals:caseCount",
+      "@type": "xsd:integer"
+    },
+
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "scorers": {
+      "@id": "evals:scorers",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "policy": {
+      "@id": "evals:policy",
+      "@type": "@id"
+    },
+    "aggregation": {
+      "@id": "evals:aggregation",
+      "@type": "xsd:string"
+    },
+    "fail_on_threshold": {
+      "@id": "evals:failOnThreshold",
+      "@type": "xsd:boolean"
+    }
+  }
+}

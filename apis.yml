@@ -1,0 +1,448 @@
+name: Evals
+description: A landscape catalog of the platforms, frameworks, libraries, and benchmark suites used to evaluate large language models, LLM-based applications, and AI agents. The topic spans human-rated, LLM-as-a-judge, reference-based, reference-free, and benchmark-aligned approaches to measuring AI system quality. Tracked alongside the eval platforms are the canonical multi-task and code/agent benchmark suites (MMLU, HumanEval, GAIA, AgentBench, BIG-Bench) that establish public points of comparison.
+url: https://github.com/api-evangelist/evals
+created: '2026-05-22'
+modified: '2026-05-22'
+specificationVersion: '0.18'
+tags:
+  - Evals
+  - LLM Evaluation
+  - AI Quality
+  - Benchmarks
+  - LLM as a Judge
+  - Observability
+  - Agent Evaluation
+  - RAG Evaluation
+  - Test-Driven AI
+apis:
+  - name: OpenAI Evals
+    description: OpenAI Evals is the open-source framework released by OpenAI for evaluating large language models and LLM-based systems. The README states "Evals provide a framework for evaluating large language models (LLMs) or systems built using LLMs." The repo bundles a registry of benchmark evals, support for model-graded grading without writing custom code, private eval data via Snowflake logging, and templates for prompt chains and tool-using agents. Written primarily in Python, the project sits at roughly 18.5k stars / 3k forks.
+    humanURL: https://github.com/openai/evals
+    baseURL: https://github.com/openai/evals
+    tags:
+      - OpenAI
+      - Open Source
+      - Model Graded
+      - Benchmark Registry
+      - Python
+    properties:
+      - type: GitHubRepository
+        url: https://github.com/openai/evals
+      - type: Documentation
+        url: https://github.com/openai/evals/tree/main/docs
+      - type: License
+        url: https://github.com/openai/evals/blob/main/LICENSE.md
+
+  - name: Inspect AI
+    description: Inspect AI is an open-source framework for large language model evaluations developed and maintained by the UK AI Security Institute (UK AISI) and Meridian Labs. It supports text comparisons, model-based grading such as model_graded_fact(), and custom scorers. Datasets carry input and target columns, with multimodal support across image, audio, and video. The framework targets frontier-AI capability and safety assessment across coding, reasoning, knowledge, behavior, and multimodal understanding.
+    humanURL: https://inspect.aisi.org.uk/
+    baseURL: https://inspect.aisi.org.uk
+    tags:
+      - UK AISI
+      - Open Source
+      - Frontier AI
+      - Model Graded
+      - Safety Evaluation
+    properties:
+      - type: Documentation
+        url: https://inspect.aisi.org.uk/
+      - type: GitHubRepository
+        url: https://github.com/UKGovernmentBEIS/inspect_ai
+
+  - name: Braintrust
+    description: Braintrust is a commercial evaluation platform that captures eval runs as immutable, comparable experiment snapshots. The product supports code-based scorers, built-in autoevals, and LLM-as-a-judge evaluators for both offline and production use. Datasets are collections of test cases (input, optional expected output, metadata) sourced from production logs, user feedback, or manual curation. Experiments slot into CI/CD pipelines to detect regressions "before they reach production."
+    humanURL: https://www.braintrust.dev/
+    baseURL: https://www.braintrust.dev
+    tags:
+      - Commercial
+      - LLM as a Judge
+      - CI/CD
+      - Experiments
+      - Regression Detection
+    properties:
+      - type: Documentation
+        url: https://www.braintrust.dev/docs
+      - type: EvaluationGuide
+        url: https://www.braintrust.dev/docs/guides/evals
+      - type: Pricing
+        url: https://www.braintrust.dev/pricing
+
+  - name: LangSmith Evaluation
+    description: LangSmith Evaluation is LangChain's evaluation framework for measuring application quality across the lifecycle. The docs describe evals as "a way to breakdown what 'good' looks like and measure it." It supports code evaluators (deterministic rules), LLM-as-judge evaluators (reference-based or reference-free), and heuristic checks (length, latency, keywords). Concepts include datasets and examples, experiments, and pairwise evaluation for relative comparisons.
+    humanURL: https://docs.langchain.com/langsmith/evaluation-concepts
+    baseURL: https://api.smith.langchain.com
+    tags:
+      - LangChain
+      - LLM as a Judge
+      - Pairwise
+      - Reference-Free
+      - Online and Offline
+    properties:
+      - type: Documentation
+        url: https://docs.langchain.com/langsmith/evaluation-concepts
+      - type: Portal
+        url: https://smith.langchain.com
+      - type: Pricing
+        url: https://www.langchain.com/pricing-langsmith
+
+  - name: Promptfoo
+    description: Promptfoo is an open-source CLI and library for evaluating and red-teaming LLM applications. The docs describe it as enabling "test-driven LLM development rather than trial-and-error" and producing "matrix views that let you quickly evaluate outputs across many prompts." It supports assertion-based scoring, integrations across OpenAI, Anthropic, Azure, Google, HuggingFace, and open-source models, plus automated red-team and pentest runs that produce vulnerability and risk reports.
+    humanURL: https://www.promptfoo.dev/
+    baseURL: https://www.promptfoo.dev
+    tags:
+      - Open Source
+      - CLI
+      - Red Teaming
+      - Assertions
+      - Test-Driven
+    properties:
+      - type: Documentation
+        url: https://www.promptfoo.dev/docs/intro/
+      - type: GitHubRepository
+        url: https://github.com/promptfoo/promptfoo
+      - type: RedTeam
+        url: https://www.promptfoo.dev/docs/red-team/
+
+  - name: Helicone
+    description: Helicone is an open-source observability and monitoring platform for LLM applications. The homepage states "The world's fastest-growing AI companies rely on Helicone to route, debug, and analyze their applications." Beyond observability dashboards (requests, segments, sessions, users), it offers prompt management, datasets, a playground, rate-limit tracking, and alerts. LLM-as-a-judge style evaluation runs against captured request logs.
+    humanURL: https://www.helicone.ai/
+    baseURL: https://api.helicone.ai
+    tags:
+      - Open Source
+      - Observability
+      - Proxy
+      - Prompt Management
+      - Y Combinator
+    properties:
+      - type: Documentation
+        url: https://docs.helicone.ai/
+      - type: GitHubRepository
+        url: https://github.com/Helicone/helicone
+      - type: Pricing
+        url: https://www.helicone.ai/pricing
+
+  - name: Patronus AI
+    description: Patronus AI is a frontier lab building evaluation infrastructure and Digital World Models for human-aligned AGI. Its evaluator models include Lynx (a hallucination-detection model reported to outperform GPT-4 on hallucination tasks) and GLIDER (an evaluation model producing reasoning chains with explainable judgments). Coverage spans research science, software development, customer service, product applications, finance, and multi-turn dialogue / long-horizon task planning.
+    humanURL: https://www.patronus.ai/
+    baseURL: https://api.patronus.ai
+    tags:
+      - Commercial
+      - Hallucination Detection
+      - Judge Models
+      - Lynx
+      - GLIDER
+    properties:
+      - type: Documentation
+        url: https://docs.patronus.ai/
+      - type: Portal
+        url: https://app.patronus.ai
+
+  - name: DeepEval (Confident AI)
+    description: DeepEval is an open-source LLM evaluation package, paired with Confident AI as the hosted observability/evals/monitoring tier. The docs call DeepEval "an open-source LLM eval package" and Confident AI "an AI quality platform with observability, evals, and monitoring." Metrics include GEval (research-backed custom metric), AnswerRelevancyMetric, TaskCompletionMetric, and ConversationalGEval. Test cases use LLMTestCase and ConversationalTestCase shapes; datasets organize Golden test cases for sync or async runs.
+    humanURL: https://www.deepeval.com/
+    baseURL: https://api.confident-ai.com
+    tags:
+      - Open Source
+      - GEval
+      - RAG
+      - Conversational
+      - Python
+    properties:
+      - type: Documentation
+        url: https://www.deepeval.com/docs/getting-started
+      - type: GitHubRepository
+        url: https://github.com/confident-ai/deepeval
+      - type: Portal
+        url: https://app.confident-ai.com
+
+  - name: Arize AI (Phoenix)
+    description: Arize AI provides an AI observability and evaluation platform centered on Arize AX (the commercial product) and Phoenix (open-source LLM tracing and evaluation). Phoenix runs LLM-as-a-judge evaluators across traces, supports datasets and experiments, and integrates with OpenTelemetry. Arize AX layers monitoring, drift detection, and root-cause analysis on top of model and LLM telemetry.
+    humanURL: https://arize.com/
+    baseURL: https://api.arize.com
+    tags:
+      - Commercial
+      - Open Source
+      - Phoenix
+      - OpenTelemetry
+      - Observability
+    properties:
+      - type: Documentation
+        url: https://arize.com/docs/ax/
+      - type: GitHubRepository
+        url: https://github.com/Arize-ai/phoenix
+      - type: Portal
+        url: https://app.arize.com
+
+  - name: Galileo
+    description: Galileo is an enterprise AI observability and evaluation engineering platform. The product line emphasizes "20+ built-in evaluators" spanning RAG, agents, safety, and security, plus custom evaluators that "auto-tune metrics from live feedback." Luna refers to compact distilled evaluator models that "monitor 100% of your traffic at 97% lower cost." The homepage tagline reads "Don't just monitor AI failures. Stop them."
+    humanURL: https://www.galileo.ai/
+    baseURL: https://api.galileo.ai
+    tags:
+      - Commercial
+      - Enterprise
+      - Luna
+      - RAG
+      - Safety
+    properties:
+      - type: Documentation
+        url: https://docs.galileo.ai/
+      - type: Portal
+        url: https://app.galileo.ai
+
+  - name: Humanloop
+    description: Humanloop was a development platform for LLM applications, describing itself as having been "the first development platform for LLM applications" and having "shaped industry standards for how to manage and evaluate AI." Following its acquisition by Anthropic the platform has been sunset, with a migration path published for former customers. Retained in this catalog for historical completeness.
+    humanURL: https://humanloop.com/
+    baseURL: https://api.humanloop.com
+    tags:
+      - Historical
+      - Acquired
+      - Anthropic
+      - Prompt Management
+    properties:
+      - type: Documentation
+        url: https://humanloop.com/docs
+      - type: AcquisitionNotice
+        url: https://humanloop.com/
+
+  - name: TruLens
+    description: TruLens is an open-source evaluation and tracing platform for AI agents that helps developers "move from vibes to metrics." Its feedback-function library covers the RAG triad — groundedness (responses supported by retrieved content), context relevance (retrieved documents match the query), and answer relevance (responses address the user question) — plus coherence, comprehensiveness, toxicity, sentiment, fairness, and custom metrics. Integrates with OpenTelemetry traces and any agent framework.
+    humanURL: https://www.trulens.org/
+    baseURL: https://www.trulens.org
+    tags:
+      - Open Source
+      - RAG Triad
+      - Feedback Functions
+      - Snowflake
+      - OpenTelemetry
+    properties:
+      - type: Documentation
+        url: https://www.trulens.org/
+      - type: GitHubRepository
+        url: https://github.com/truera/trulens
+
+  - name: Weights and Biases Weave
+    description: W&B Weave is a platform for evaluating, monitoring, and iterating on AI agents and applications, started with "one line of code." Weave Evaluations enable visual comparison of runs, automatic versioning of datasets and scorers, an interactive playground, and leaderboards. Scorers include pre-built ones (toxicity, hallucination), custom Python scoring functions, human feedback collection, and third-party scorers from providers such as RAGAS and LangChain.
+    humanURL: https://wandb.ai/site/weave
+    baseURL: https://api.wandb.ai
+    tags:
+      - Weights and Biases
+      - Commercial
+      - Scorers
+      - Leaderboards
+      - Human Feedback
+    properties:
+      - type: Documentation
+        url: https://weave-docs.wandb.ai/
+      - type: GitHubRepository
+        url: https://github.com/wandb/weave
+      - type: Portal
+        url: https://wandb.ai
+
+  - name: Ragas
+    description: Ragas is an open-source evaluation library focused on retrieval-augmented generation, described in its own docs as "a library that helps you move from 'vibe checks' to systematic evaluation loops for your AI applications." It exposes LLM-driven metrics for RAG (faithfulness, context recall, answer relevancy), integrates with LangChain and LlamaIndex, and supports custom metric authoring as a complement to other eval platforms (Weave, LangSmith).
+    humanURL: https://docs.ragas.io/
+    baseURL: https://docs.ragas.io
+    tags:
+      - Open Source
+      - RAG
+      - Faithfulness
+      - Context Recall
+      - Library
+    properties:
+      - type: Documentation
+        url: https://docs.ragas.io/en/stable/
+      - type: GitHubRepository
+        url: https://github.com/explodinggradients/ragas
+
+  - name: MLflow LLM Evaluate
+    description: MLflow LLM evaluate extends MLflow's experiment tracking with mlflow.evaluate() support for LLM tasks. The API runs reference-based and reference-free metrics (toxicity, perplexity, BLEU, ROUGE, exact match, custom LLM judges) over a logged model or a function and persists results into MLflow's experiment store alongside traditional ML metrics. Sits inside the broader MLflow open-source project.
+    humanURL: https://mlflow.org/
+    baseURL: https://mlflow.org
+    tags:
+      - Open Source
+      - MLflow
+      - Experiment Tracking
+      - LLM Judges
+      - Apache
+    properties:
+      - type: Documentation
+        url: https://mlflow.org/docs/latest/llms/llm-evaluate/index.html
+      - type: GitHubRepository
+        url: https://github.com/mlflow/mlflow
+
+  - name: MMLU Benchmark
+    description: MMLU (Measuring Massive Multitask Language Understanding) is a multiple-choice benchmark spanning 57 subjects from STEM and international law to nutrition and religion. It contains 15,908 multiple-choice questions (four options each), of which 1,540 are reserved for hyperparameter tuning. Per its overview, "It was one of the most commonly used benchmarks for comparing the capabilities of large language models, with over 100 million downloads as of July 2024."
+    humanURL: https://github.com/hendrycks/test
+    baseURL: https://github.com/hendrycks/test
+    tags:
+      - Benchmark
+      - Knowledge
+      - Multiple Choice
+      - Multitask
+      - Reference-Based
+    properties:
+      - type: GitHubRepository
+        url: https://github.com/hendrycks/test
+      - type: Paper
+        url: https://arxiv.org/abs/2009.03300
+      - type: Dataset
+        url: https://huggingface.co/datasets/cais/mmlu
+
+  - name: HumanEval Benchmark
+    description: HumanEval is OpenAI's evaluation harness for code-generation models, described in its README as "an evaluation harness for the HumanEval problem solving dataset described in the paper 'Evaluating Large Language Models Trained on Code'." Functional correctness is measured by executing model-generated code against unit tests, reported as pass@1, pass@10, and pass@100 by default.
+    humanURL: https://github.com/openai/human-eval
+    baseURL: https://github.com/openai/human-eval
+    tags:
+      - Benchmark
+      - Code Generation
+      - Functional Correctness
+      - Pass@k
+      - Reference-Based
+    properties:
+      - type: GitHubRepository
+        url: https://github.com/openai/human-eval
+      - type: Paper
+        url: https://arxiv.org/abs/2107.03374
+      - type: Dataset
+        url: https://huggingface.co/datasets/openai/openai_humaneval
+
+  - name: GAIA Benchmark
+    description: GAIA is "a benchmark for General AI Assistants," published in 2023 (arXiv 2311.12983). It tests general-purpose AI agent capability across reasoning, tool use, multi-modality, and web browsing, with a public leaderboard hosted on Hugging Face for community submissions. The benchmark has become a reference point for evaluating agentic systems that combine an LLM with tools and a browser.
+    humanURL: https://huggingface.co/gaia-benchmark
+    baseURL: https://huggingface.co/gaia-benchmark
+    tags:
+      - Benchmark
+      - AI Agents
+      - Reasoning
+      - Tool Use
+      - Leaderboard
+    properties:
+      - type: Dataset
+        url: https://huggingface.co/datasets/gaia-benchmark/GAIA
+      - type: Paper
+        url: https://arxiv.org/abs/2311.12983
+      - type: Leaderboard
+        url: https://huggingface.co/spaces/gaia-benchmark/leaderboard
+
+  - name: AgentBench
+    description: AgentBench is the first benchmark designed to evaluate LLM-as-Agent across a diverse spectrum of environments. It bundles 8 environments — 5 newly created (Operating System, Database, Knowledge Graph, Digital Card Game, Lateral Thinking Puzzles) and 3 adapted (House-Holding from ALFWorld, Web Shopping from WebShop, Web Browsing from Mind2Web). The benchmark requires roughly 4,000 dev-set and 13,000 test-set interactions per model.
+    humanURL: https://github.com/THUDM/AgentBench
+    baseURL: https://github.com/THUDM/AgentBench
+    tags:
+      - Benchmark
+      - AI Agents
+      - Multi-Environment
+      - LLM-as-Agent
+      - Tsinghua
+    properties:
+      - type: GitHubRepository
+        url: https://github.com/THUDM/AgentBench
+      - type: Paper
+        url: https://arxiv.org/abs/2308.03688
+      - type: Leaderboard
+        url: https://llmbench.ai/agent
+
+  - name: BIG-Bench
+    description: The Beyond the Imitation Game Benchmark (BIG-Bench) is "a collaborative benchmark intended to probe large language models and extrapolate their future capabilities." It contains more than 200 tasks across JSON-based simplified tasks and programmatic tasks; a curated subset (BIG-Bench Lite) of 24 tasks is provided as the canonical headline measurement. Maintained on GitHub by Google with open community task submissions.
+    humanURL: https://github.com/google/BIG-bench
+    baseURL: https://github.com/google/BIG-bench
+    tags:
+      - Benchmark
+      - Collaborative
+      - Multitask
+      - Google
+      - BIG-Bench Lite
+    properties:
+      - type: GitHubRepository
+        url: https://github.com/google/BIG-bench
+      - type: Paper
+        url: https://arxiv.org/abs/2206.04615
+      - type: Documentation
+        url: https://github.com/google/BIG-bench/blob/main/README.md
+
+common:
+  - type: GitHubOrganization
+    url: https://github.com/api-evangelist
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-eval-run-schema.json
+    title: Eval Run Schema
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-eval-suite-schema.json
+    title: Eval Suite Schema
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-eval-case-schema.json
+    title: Eval Case Schema
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-scorer-schema.json
+    title: Scorer Schema
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-judge-schema.json
+    title: Judge Schema
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-dataset-schema.json
+    title: Dataset Schema
+  - type: JSONStructure
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-structure/evals-eval-run-structure.json
+    title: Eval Run Structure
+  - type: JSONLD
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-ld/evals-context.jsonld
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/vocabulary/evals-vocabulary.yml
+  - type: Features
+    data:
+      - name: LLM-as-a-Judge Scoring
+        description: A second LLM evaluates the output of the system-under-test, producing a numeric or categorical score and (optionally) a written rationale. The dominant scoring mode for free-form text outputs across Braintrust, LangSmith, DeepEval, Weave, TruLens, Phoenix, and Patronus.
+      - name: Reference-Based Scoring
+        description: Compares model output against a ground-truth expected answer using exact match, BLEU, ROUGE, embedding similarity, or task-specific equality (e.g. unit-test pass/fail). The native mode for benchmarks like MMLU, HumanEval, and GAIA.
+      - name: Reference-Free Scoring
+        description: Assesses output quality without ground truth — toxicity, coherence, faithfulness against retrieved context, criterion adherence. Enables online (production-traffic) evaluation where labels do not exist.
+      - name: Pairwise Comparison
+        description: A judge ranks two candidate outputs A vs B (or a tie). Useful when absolute scoring is hard but relative preference is reliable. Surfaced explicitly by LangSmith and used widely in chatbot arenas.
+      - name: Benchmark-Aligned Evaluation
+        description: Runs the system-under-test against a standardized public dataset (MMLU, HumanEval, GAIA, AgentBench, BIG-Bench) to produce comparable, headline scores. The basis of model leaderboards.
+      - name: Human-Rated Scoring
+        description: Domain experts or end users provide thumbs-up/down, Likert ratings, or written critiques. Used as ground truth, as a judge-calibration signal, and as a final acceptance gate before production.
+      - name: RAG Triad
+        description: Three feedback functions — groundedness, context relevance, answer relevance — codified by TruLens and widely adopted across Ragas, Phoenix, DeepEval, and LangSmith for evaluating retrieval-augmented generation pipelines.
+      - name: Agent and Tool-Use Evaluation
+        description: Evaluating multi-step agent trajectories — did the agent pick the right tool, did the tool call succeed, did the final answer satisfy the goal. Supported by Inspect AI, Galileo, Weave, LangSmith, Braintrust, and benchmarks like AgentBench and GAIA.
+      - name: Online Production Monitoring
+        description: Eval scorers (typically reference-free LLM judges and Luna-style distilled evaluators) attach to live traffic via tracing/observability layers (Phoenix, Arize, Helicone, Galileo, Weave) to flag regressions in real time.
+      - name: Red-Team / Safety Evaluation
+        description: Adversarial test suites probe jailbreaks, prompt injection, PII leakage, harmful content, and policy violations. First-class in Promptfoo, Patronus, Galileo, and Inspect AI's safety evals.
+  - type: UseCases
+    data:
+      - name: Model Selection
+        description: Run candidate models (GPT-5, Claude 4.7, Gemini 3, open-weight) against a shared eval suite to choose the best fit for a specific application by quality, cost, and latency.
+      - name: Prompt Engineering Iteration
+        description: Compare prompt variants in a matrix-style eval (Promptfoo, LangSmith experiments, Braintrust experiments) to pick the best prompt before shipping.
+      - name: Regression Detection in CI/CD
+        description: Wire an eval suite into CI so a pull request that drops a key scorer below a threshold fails the build, preventing quality regressions from reaching production.
+      - name: RAG Pipeline Tuning
+        description: Use RAG-triad scores (groundedness / context relevance / answer relevance) and faithfulness to tune chunking, embedding, reranking, and prompt choices.
+      - name: Agent Trajectory Quality
+        description: Score multi-step agent runs on tool-selection correctness, step efficiency, and final-answer faithfulness — the core measurement for production agentic apps.
+      - name: Hallucination and Safety Guardrails
+        description: Deploy dedicated judge models (Lynx, GLIDER, Luna) to flag hallucinations, toxic content, PII leakage, and policy violations in real time.
+      - name: Frontier Capability and Safety Assessment
+        description: Independent labs (UK AISI, US AISI) run capability and safety evaluations on frontier models before release, using frameworks like Inspect AI.
+      - name: Public Leaderboard Reporting
+        description: Submit a model's scores against MMLU, HumanEval, GAIA, AgentBench, and BIG-Bench to position it on community leaderboards and back marketing claims with reproducible numbers.
+  - type: Integrations
+    data:
+      - name: OpenTelemetry
+        description: Phoenix, TruLens, Weave, and most modern eval platforms ingest LLM traces via OpenTelemetry, making eval a layer on top of standard observability.
+      - name: LangChain / LangGraph
+        description: LangSmith is the native eval tier for LangChain/LangGraph apps; most other platforms also integrate.
+      - name: LlamaIndex
+        description: Ragas, DeepEval, and Phoenix integrate directly with LlamaIndex for RAG evaluation.
+      - name: Hugging Face Datasets
+        description: MMLU, HumanEval, and GAIA are distributed as Hugging Face datasets and consumed by every eval framework.
+      - name: CI/CD (GitHub Actions, etc.)
+        description: Braintrust, Promptfoo, LangSmith, and DeepEval ship CI integrations to fail builds on regression.
+      - name: Snowflake
+        description: OpenAI Evals can log eval results to Snowflake; TruLens (Truera) is now part of Snowflake.
+
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com

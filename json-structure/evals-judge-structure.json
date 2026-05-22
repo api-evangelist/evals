@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-structure/evals-judge-structure.json",
+  "name": "Judge",
+  "description": "A specialized LLM-as-a-judge (or human) scorer with model, prompt, rubric, and calibration data.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "judge_kind": {
+      "type": "string",
+      "enum": ["llm", "human", "model_panel", "human_panel", "distilled_evaluator"]
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "provider": { "type": "string" },
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "prompt_template": { "type": "string" },
+    "rubric": { "type": "string" },
+    "output_format": {
+      "type": "string",
+      "enum": ["score", "score_and_rationale", "label", "label_and_rationale", "pairwise_preference"]
+    },
+    "calibration": {
+      "type": "object",
+      "properties": {
+        "human_agreement": { "type": "number" },
+        "kappa": { "type": "number" },
+        "sample_size": { "type": "integer" },
+        "calibrated_on": { "type": "string", "format": "date-time" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["id", "name", "judge_kind"]
+}

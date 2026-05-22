@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/evals/refs/heads/main/json-schema/evals-dataset-schema.json",
+  "title": "EvalDataset",
+  "description": "A collection of EvalCases plus metadata describing its provenance, license, splits, and the task it targets. Maps directly to Hugging Face datasets (MMLU, HumanEval, GAIA), LangSmith datasets, Braintrust datasets, and DeepEval EvaluationDatasets.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "ds_support_faq_2026q2"
+    },
+    "name": {
+      "type": "string",
+      "example": "Customer Support FAQ 2026 Q2"
+    },
+    "description": {
+      "type": "string",
+      "example": "Curated and human-verified set of 240 customer-support questions and reference answers for evaluating the support RAG pipeline."
+    },
+    "version": {
+      "type": "string",
+      "example": "2026.05.0"
+    },
+    "task": {
+      "type": "string",
+      "description": "What the dataset is for.",
+      "enum": ["qa", "rag", "code_generation", "summarization", "classification", "agent_task", "safety", "multi_turn_dialogue", "knowledge", "reasoning"],
+      "example": "rag"
+    },
+    "source": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URL where the dataset is published.",
+      "example": "https://huggingface.co/datasets/cais/mmlu"
+    },
+    "license": {
+      "type": "string",
+      "example": "MIT"
+    },
+    "splits": {
+      "type": "object",
+      "description": "Named subsets (train/dev/test, or domain-specific splits).",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "count": { "type": "integer", "example": 240 },
+          "uri": { "type": "string", "format": "uri" }
+        }
+      },
+      "example": {
+        "train": { "count": 180 },
+        "test": { "count": 60 }
+      }
+    },
+    "case_count": {
+      "type": "integer",
+      "description": "Total number of cases across all splits.",
+      "example": 240
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["rag", "support", "en-US"]
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["id", "name", "task"]
+}

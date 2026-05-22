@@ -1,0 +1,16 @@
+{
+  "id": "case_0042",
+  "input": "What is the refund window for a damaged item?",
+  "expected": "30 days from delivery for damaged items.",
+  "context": [
+    "Refund policy section 4.2: Damaged items may be returned within 30 days of delivery for a full refund.",
+    "Refund policy section 4.3: Non-damaged returns are accepted within 14 days of delivery."
+  ],
+  "metadata": {
+    "domain": "customer-support",
+    "difficulty": "easy",
+    "persona": "first-time-buyer",
+    "source": "https://example.com/help/refund-policy"
+  },
+  "tags": ["policy", "refunds"]
+}

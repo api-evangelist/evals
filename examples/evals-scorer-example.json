@@ -1,0 +1,18 @@
+{
+  "id": "scorer_faithfulness_v2",
+  "name": "faithfulness",
+  "description": "Measures whether the answer is grounded in the retrieved context (RAG faithfulness). Implemented as an LLM-as-a-judge call against a strict rubric.",
+  "type": "llm_judge",
+  "implementation": "judge:judge_groundedness_v1",
+  "judge_model": "gpt-5",
+  "judge_prompt": "Score how well the answer is grounded in the retrieved context on a 0.0-1.0 scale. Penalize unsupported claims.",
+  "scale": {
+    "min": 0,
+    "max": 1,
+    "step": 0.01,
+    "kind": "continuous"
+  },
+  "threshold": 0.8,
+  "rubric": "1.0 = every claim supported. 0.5 = mostly supported with minor invented additions. 0.0 = contradicts or invents content.",
+  "tags": ["rag", "groundedness", "faithfulness"]
+}
