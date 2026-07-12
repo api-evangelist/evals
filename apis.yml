@@ -361,6 +361,8 @@ apis:
         url: https://github.com/google/BIG-bench/blob/main/README.md
 
 common:
+  - type: DomainSecurity
+    url: security/evals-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/api-evangelist
   - type: JSONSchema
