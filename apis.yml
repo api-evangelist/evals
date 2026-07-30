@@ -1,3 +1,15 @@
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/evals.png
 name: Evals
 description: A landscape catalog of the platforms, frameworks, libraries, and benchmark suites used to evaluate large language models, LLM-based applications, and AI agents. The topic spans human-rated, LLM-as-a-judge, reference-based, reference-free, and benchmark-aligned approaches to measuring AI system quality. Tracked alongside the eval platforms are the canonical multi-task and code/agent benchmark suites (MMLU, HumanEval, GAIA, AgentBench, BIG-Bench) that establish public points of comparison.
 url: https://github.com/api-evangelist/evals
