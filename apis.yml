@@ -373,6 +373,10 @@ apis:
         url: https://github.com/google/BIG-bench/blob/main/README.md
 
 common:
+  - type: IssueTracker
+    url: https://github.com/openai/evals/issues
+  - type: SecurityPolicy
+    url: https://github.com/openai/evals/blob/main/SECURITY.md
   - type: DomainSecurity
     url: security/evals-domain-security.yml
   - type: GitHubOrganization
