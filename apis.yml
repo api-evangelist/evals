@@ -15,7 +15,7 @@ description: A landscape catalog of the platforms, frameworks, libraries, and be
 url: https://github.com/api-evangelist/evals
 created: '2026-05-22'
 modified: '2026-05-22'
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 tags:
   - Evals
   - LLM Evaluation
