@@ -33,6 +33,12 @@ apis:
     baseURL: https://github.com/openai/evals
     tags:
       - OpenAI
+      - Open-Source
+      - Model Graded
+      - Benchmark Registry
+      - Python
+    tags_raw:
+      - OpenAI
       - Open Source
       - Model Graded
       - Benchmark Registry
@@ -50,6 +56,12 @@ apis:
     humanURL: https://inspect.aisi.org.uk/
     baseURL: https://inspect.aisi.org.uk
     tags:
+      - UK AISI
+      - Open-Source
+      - Frontier AI
+      - Model Graded
+      - Safety Evaluation
+    tags_raw:
       - UK AISI
       - Open Source
       - Frontier AI
@@ -102,6 +114,12 @@ apis:
     humanURL: https://www.promptfoo.dev/
     baseURL: https://www.promptfoo.dev
     tags:
+      - Open-Source
+      - CLI
+      - Red Teaming
+      - Assertions
+      - Test-Driven
+    tags_raw:
       - Open Source
       - CLI
       - Red Teaming
@@ -120,6 +138,12 @@ apis:
     humanURL: https://www.helicone.ai/
     baseURL: https://api.helicone.ai
     tags:
+      - Open-Source
+      - Observability
+      - Proxy
+      - Prompt Management
+      - Y Combinator
+    tags_raw:
       - Open Source
       - Observability
       - Proxy
@@ -154,6 +178,12 @@ apis:
     humanURL: https://www.deepeval.com/
     baseURL: https://api.confident-ai.com
     tags:
+      - Open-Source
+      - G-Eval
+      - RAG
+      - Conversational
+      - Python
+    tags_raw:
       - Open Source
       - GEval
       - RAG
@@ -172,6 +202,12 @@ apis:
     humanURL: https://arize.com/
     baseURL: https://api.arize.com
     tags:
+      - Commercial
+      - Open-Source
+      - Phoenix
+      - OpenTelemetry
+      - Observability
+    tags_raw:
       - Commercial
       - Open Source
       - Phoenix
@@ -221,6 +257,12 @@ apis:
     humanURL: https://www.trulens.org/
     baseURL: https://www.trulens.org
     tags:
+      - Open-Source
+      - RAG Triad
+      - Feedback Functions
+      - Snowflake
+      - OpenTelemetry
+    tags_raw:
       - Open Source
       - RAG Triad
       - Feedback Functions
@@ -255,6 +297,12 @@ apis:
     humanURL: https://docs.ragas.io/
     baseURL: https://docs.ragas.io
     tags:
+      - Open-Source
+      - RAG
+      - Faithfulness
+      - Context Recall
+      - Library
+    tags_raw:
       - Open Source
       - RAG
       - Faithfulness
@@ -271,6 +319,12 @@ apis:
     humanURL: https://mlflow.org/
     baseURL: https://mlflow.org
     tags:
+      - Open-Source
+      - MLflow
+      - Experiment Tracking
+      - LLM Judges
+      - Apache
+    tags_raw:
       - Open Source
       - MLflow
       - Experiment Tracking
@@ -287,6 +341,12 @@ apis:
     humanURL: https://github.com/hendrycks/test
     baseURL: https://github.com/hendrycks/test
     tags:
+      - Benchmarks
+      - Knowledge
+      - Multiple Choice
+      - Multitask
+      - Reference-Based
+    tags_raw:
       - Benchmark
       - Knowledge
       - Multiple Choice
@@ -305,6 +365,12 @@ apis:
     humanURL: https://github.com/openai/human-eval
     baseURL: https://github.com/openai/human-eval
     tags:
+      - Benchmarks
+      - Code Generation
+      - Functional Correctness
+      - Pass@k
+      - Reference-Based
+    tags_raw:
       - Benchmark
       - Code Generation
       - Functional Correctness
@@ -323,6 +389,12 @@ apis:
     humanURL: https://huggingface.co/gaia-benchmark
     baseURL: https://huggingface.co/gaia-benchmark
     tags:
+      - Benchmarks
+      - AI Agents
+      - Reasoning
+      - Tool Use
+      - Leaderboard
+    tags_raw:
       - Benchmark
       - AI Agents
       - Reasoning
@@ -341,6 +413,12 @@ apis:
     humanURL: https://github.com/THUDM/AgentBench
     baseURL: https://github.com/THUDM/AgentBench
     tags:
+      - Benchmarks
+      - AI Agents
+      - Multi-Environment
+      - LLM-as-Agent
+      - Tsinghua
+    tags_raw:
       - Benchmark
       - AI Agents
       - Multi-Environment
@@ -359,6 +437,12 @@ apis:
     humanURL: https://github.com/google/BIG-bench
     baseURL: https://github.com/google/BIG-bench
     tags:
+      - Benchmarks
+      - Collaborative
+      - Multitask
+      - Google
+      - BIG-Bench Lite
+    tags_raw:
       - Benchmark
       - Collaborative
       - Multitask
