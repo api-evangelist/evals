@@ -191,7 +191,7 @@ apis:
     baseURL: https://api.confident-ai.com
     tags:
       - Open-Source
-      - G-Eval
+      - GEval
       - RAG
       - Conversational
       - Python
@@ -353,7 +353,7 @@ apis:
     humanURL: https://github.com/hendrycks/test
     baseURL: https://github.com/hendrycks/test
     tags:
-      - Benchmarks
+      - Benchmark
       - Knowledge
       - Multiple Choice
       - Multitask
@@ -377,7 +377,7 @@ apis:
     humanURL: https://github.com/openai/human-eval
     baseURL: https://github.com/openai/human-eval
     tags:
-      - Benchmarks
+      - Benchmark
       - Code Generation
       - Functional Correctness
       - Pass@k
@@ -401,7 +401,7 @@ apis:
     humanURL: https://huggingface.co/gaia-benchmark
     baseURL: https://huggingface.co/gaia-benchmark
     tags:
-      - Benchmarks
+      - Benchmark
       - AI Agents
       - Reasoning
       - Tool Use
@@ -425,7 +425,7 @@ apis:
     humanURL: https://github.com/THUDM/AgentBench
     baseURL: https://github.com/THUDM/AgentBench
     tags:
-      - Benchmarks
+      - Benchmark
       - AI Agents
       - Multi-Environment
       - LLM-as-Agent
@@ -449,7 +449,7 @@ apis:
     humanURL: https://github.com/google/BIG-bench
     baseURL: https://github.com/google/BIG-bench
     tags:
-      - Benchmarks
+      - Benchmark
       - Collaborative
       - Multitask
       - Google
