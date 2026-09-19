@@ -405,7 +405,7 @@ apis:
       - AI Agents
       - Reasoning
       - Tool Use
-      - Leaderboard
+      - Leaderboards
     tags_raw:
       - Benchmark
       - AI Agents
