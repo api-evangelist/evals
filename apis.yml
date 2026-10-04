@@ -1,14 +1,21 @@
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - arize-ai/phoenix
+    - confident-ai/deepeval
+    - explodinggradients/ragas
+    - google/big-bench
+    - helicone/helicone
   open_source: unknown
   commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -45,7 +52,7 @@ apis:
     baseURL: https://github.com/openai/evals
     tags:
       - OpenAI
-      - Open-Source
+      - Open Source
       - Model Graded
       - Benchmark Registry
       - Python
@@ -55,6 +62,7 @@ apis:
       - Model Graded
       - Benchmark Registry
       - Python
+      - Open-Source
     properties:
       - type: GitHubRepository
         url: https://github.com/openai/evals
@@ -69,7 +77,7 @@ apis:
     baseURL: https://inspect.aisi.org.uk
     tags:
       - UK AISI
-      - Open-Source
+      - Open Source
       - Frontier AI
       - Model Graded
       - Safety Evaluation
@@ -79,6 +87,7 @@ apis:
       - Frontier AI
       - Model Graded
       - Safety Evaluation
+      - Open-Source
     properties:
       - type: Documentation
         url: https://inspect.aisi.org.uk/
@@ -126,7 +135,7 @@ apis:
     humanURL: https://www.promptfoo.dev/
     baseURL: https://www.promptfoo.dev
     tags:
-      - Open-Source
+      - Open Source
       - CLI
       - Red Teaming
       - Assertions
@@ -137,6 +146,7 @@ apis:
       - Red Teaming
       - Assertions
       - Test-Driven
+      - Open-Source
     properties:
       - type: Documentation
         url: https://www.promptfoo.dev/docs/intro/
@@ -150,7 +160,7 @@ apis:
     humanURL: https://www.helicone.ai/
     baseURL: https://api.helicone.ai
     tags:
-      - Open-Source
+      - Open Source
       - Observability
       - Proxy
       - Prompt Management
@@ -161,6 +171,7 @@ apis:
       - Proxy
       - Prompt Management
       - Y Combinator
+      - Open-Source
     properties:
       - type: Documentation
         url: https://docs.helicone.ai/
@@ -190,10 +201,10 @@ apis:
     humanURL: https://www.deepeval.com/
     baseURL: https://api.confident-ai.com
     tags:
-      - Open-Source
+      - Open Source
       - G-Eval
       - RAG
-      - Conversational
+      - Conversational AI
       - Python
     tags_raw:
       - Open Source
@@ -201,6 +212,7 @@ apis:
       - RAG
       - Conversational
       - Python
+      - Open-Source
     properties:
       - type: Documentation
         url: https://www.deepeval.com/docs/getting-started
@@ -215,7 +227,7 @@ apis:
     baseURL: https://api.arize.com
     tags:
       - Commercial
-      - Open-Source
+      - Open Source
       - Phoenix
       - OpenTelemetry
       - Observability
@@ -225,6 +237,7 @@ apis:
       - Phoenix
       - OpenTelemetry
       - Observability
+      - Open-Source
     properties:
       - type: Documentation
         url: https://arize.com/docs/ax/
@@ -269,7 +282,7 @@ apis:
     humanURL: https://www.trulens.org/
     baseURL: https://www.trulens.org
     tags:
-      - Open-Source
+      - Open Source
       - RAG Triad
       - Feedback Functions
       - Snowflake
@@ -280,6 +293,7 @@ apis:
       - Feedback Functions
       - Snowflake
       - OpenTelemetry
+      - Open-Source
     properties:
       - type: Documentation
         url: https://www.trulens.org/
@@ -309,7 +323,7 @@ apis:
     humanURL: https://docs.ragas.io/
     baseURL: https://docs.ragas.io
     tags:
-      - Open-Source
+      - Open Source
       - RAG
       - Faithfulness
       - Context Recall
@@ -320,6 +334,7 @@ apis:
       - Faithfulness
       - Context Recall
       - Library
+      - Open-Source
     properties:
       - type: Documentation
         url: https://docs.ragas.io/en/stable/
@@ -331,7 +346,7 @@ apis:
     humanURL: https://mlflow.org/
     baseURL: https://mlflow.org
     tags:
-      - Open-Source
+      - Open Source
       - MLflow
       - Experiment Tracking
       - LLM Judges
@@ -342,6 +357,7 @@ apis:
       - Experiment Tracking
       - LLM Judges
       - Apache
+      - Open-Source
     properties:
       - type: Documentation
         url: https://mlflow.org/docs/latest/llms/llm-evaluate/index.html

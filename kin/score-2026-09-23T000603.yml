@@ -1,21 +1,19 @@
-# Kin Score artifact — evals — 2026-09-02T224043
+# Kin Score artifact — evals — 2026-09-23T000603
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: evals
-  schema_version: 0.18.0
-  scored_at: '2026-09-02'
-  run_ts: 2026-09-02T224043
-  composite: 23.0
+  schema_version: 0.22.0
+  scored_at: '2026-09-23'
+  run_ts: 2026-09-23T000603
+  composite: 21.7
   band: emerging
   facets:
     discoverability: 74.1
     contract_quality: 14.7
-    governance: 25.0
+    contract_governance: 25.0
     operational_transparency: 13.2
     developer_ergonomics: 19.0
-    commercial_clarity: 10.5
-    contract_governance: 25.0
     access_clarity: 10.5
   agent_readiness:
     score: 0.0
@@ -40,6 +38,3 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
-  open_source:
-    applies: true
-    score: 35.0
